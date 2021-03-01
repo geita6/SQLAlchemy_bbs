@@ -25,22 +25,22 @@
 **功能演示**
 - 
 - 注册/登录
-![login.gif](https://github.com/geita6/SQLAlchemy_bbs/blob/master/static/index.gif)
+![login.gif](https://github.com/geita6/SQLAlchemy_bbs/blob/main/static/index.gif)
 
 - 发帖/回帖
-![topic.gif](https://github.com/geita6/SQLAlchemy_bbs/blob/master/static/topic.gif)
+![topic.gif](https://github.com/geita6/SQLAlchemy_bbs/blob/main/static/topic.gif)
 
 - 修改个人资料
-![setting.gif](https://github.com/geita6/SQLAlchemy_bbs/blob/master/static/setting.gif)
+![setting.gif](https://github.com/geita6/SQLAlchemy_bbs/blob/main/static/setting.gif)
 
 - 站内信
-![mail.gif](https://github.com/geita6/SQLAlchemy_bbs/blob/master/static/mail.gif)
+![mail.gif](https://github.com/geita6/SQLAlchemy_bbs/blob/main/static/mail.gif)
 
 - 重置密码
-![reset_pass.gif](https://github.com/geita6/SQLAlchemy_bbs/blob/master/static/reset_pass.gif)
+![reset_pass.gif](https://github.com/geita6/SQLAlchemy_bbs/blob/main/static/reset_pass.gif)
 
 - 个人主页
-![profile.gif](https://github.com/geita6/SQLAlchemy_bbs/blob/master/static/profile.gif)
+![profile.gif](https://github.com/geita6/SQLAlchemy_bbs/blob/main/static/profile.gif)
 
 
 **依赖**
