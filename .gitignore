@@ -5,4 +5,4 @@
 secret.py
 config.py
 deploy.sh
-.gitattributes
+#.gitattributes
