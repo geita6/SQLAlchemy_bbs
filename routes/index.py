@@ -69,14 +69,12 @@ def reset_send():
     form = request.form.to_dict()
     username = form['username']
     mail = form['to_mail']
-    # print('mail', mail)
     #  根据用户名拿到 user 对象
     u = User.one(username=username)
     token_id = str(uuid.uuid4())
     if u is not None:
         cache[token_id] = u.id
         # 给 user.email 的邮箱发邮件，发信人是企业邮箱，
-        # 内容是 http://ip/reset/view?token=token的值。
         content = '重置密码地址 {}{}?token_id={}'.format(
             config.ip,
             url_for('index.reset_view'),
@@ -111,7 +109,6 @@ def reset_view():
 @main.route("/reset/update", methods=['POST'])
 def reset_update():
     token_id = request.args['token_id']
-    # log('token_id ', token_id)
 
     # 如果 token 存在通过对应 user_id 拿到 user 对象
     # if cache.exists(token.encode()) and int(cache.get(token).decode()) == u.id:
@@ -124,7 +121,6 @@ def reset_update():
         # 两次密码一致才可以更改
         if request.form['confirm_pass'] == request.form['new_pass']:
             password = request.form['confirm_pass']
-            # print('password', password)
             # 密码要加盐
             User.update(user_id, password=User.salted_password(password))
             return redirect(url_for('index.index'))

@@ -18,9 +18,6 @@ main = Blueprint('profile', __name__)
 
 # 需要在添加删除修改帖子时删除redis缓存
 def created_topic(user_id):
-    # # O(n)
-    # ts = Topic.all(user_id=user_id)
-    # return ts
     k = 'created_topic_{}'.format(user_id)
     if cache.exists(k):
         # print('has redis')
