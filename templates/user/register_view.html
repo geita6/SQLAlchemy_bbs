@@ -1,0 +1,23 @@
+{% extends "user/basebase.html" %}
+{% block main %}
+    <div class="pure-g">
+        <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+            <form class="pure-form pure-form-stacked" method="post" action="{{ url_for('index.register') }}">
+                <fieldset>
+
+                    <input name="username" type="text" placeholder="用户名">
+
+                    <input name="password" type="password" placeholder="密码">
+                    <button type="submit" class="pure-button">注册</button>
+
+                    <p id="nav">
+                        <a href="/">返回登录</a>
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+
+
+    </div>
+
+{% endblock %}

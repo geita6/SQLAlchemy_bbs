@@ -1,0 +1,22 @@
+{% extends "user/basebase.html" %}
+{% block main %}
+    <div class="pure-g">
+        <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+            <form class="pure-form pure-form-stacked" method="post" action="{{ url_for('index.login') }}">
+                <fieldset>
+
+                    <input name="username" type="text" placeholder="用户名 abc">
+                    <input name="password" type="password" placeholder="密码 123">
+                    <button type="submit" class="pure-button">登录</button>
+
+                    <p id="nav">
+                        <a href="/register_view">注册账号</a>|<a href="/reset_commit_view">找回密码</a>
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% block title %}个人主页{% endblock %}
+{% block main %}
+
+    <div id='main'>
+        <div id="sidebar">
+            <div class="panel">
+                <div class="header">
+                    <span class="col_fade">个人信息</span>
+                </div>
+                <div class="inner">
+                    <div class="user_card">
+                        <div>
+                            <a class="user_avatar" href="{{ url_for('profile.index') }}">
+                                <img src="{{ user.image }}" title="{{ user.username }}">
+                            </a>
+
+                            <span class="user_name">
+                            <a class="dark" href="{{ url_for('profile.index') }}">
+                                {{ user.username }}
+                            </a>
+                            </span>
+
+                            <div class="space clearfix"></div>
+                            <span class="signature">
+                                {{ user.signature }}
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="panel">
+                <div class="inner">
+                    <a href="{{ url_for('topic.new') }}" class="create_topic_btn">
+                        <span class="span-success">发布话题</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        {#个人信息#}
+        <div id='content'>
+            <div class='panel'>
+                <div class='header'>
+                    <ul class='breadcrumb'>
+                        <li><a href='/topic'>主页</a><span class='divider'>/</span></li>
+                    </ul>
+                </div>
+                <div class='inner userinfo'>
+                    <div class='user_big_avatar'>
+                        <img src="{{ user.image }} " class="user_avatar"
+                             title="{{ user.username }}"/>
+                    </div>
+                    <a class='dark'>{{ user.username }}</a>
+
+                    <p class='col_fade'>注册时间：{{ user.created_time | format_time }}</p>
+
+                </div>
+            </div>
+
+            {# 最近创建的话题#}
+            <div class='panel'>
+                <div class='header'>
+                    <span class='col_fade'>最近创建的话题</span>
+                </div>
+
+                <div class="cell">
+                    {# 按时间倒序排列#}
+                    {% for t in created | sort(attribute='created_time',reverse = True) %}
+
+                        <a class="user_avatar pull-left" href="{{ url_for('profile.user_detail', id=t.user_id) }}">
+                            <img src="{{ user.image }}" title="{{ user.username }}">
+                        </a>
+                        <span class="reply_count pull-left">
+                            <span class="count_of_replies" title="回复数">
+                                {{ t.replies() | count }}
+                            </span>
+                            <span class="count_seperator">/</span>
+                            <span class="count_of_visits" title="点击数">
+                                {{ t.views }}
+                            </span>
+                            </span>
+                        <span class='last_time pull-right'>
+                            {% if t.last_reply() != None %}
+                                <a class="user_avatar" href="{{ url_for('profile.user_detail', id=t.last_reply().user_id) }}">
+                                    <img class="user_small_avatar" src="{{ t.last_reply().user().image }}">
+                                </a>
+                                <span class="last_active_time">{{ t.last_reply().created_time | time_between_now }}</span>
+                            {% else %}
+                                <span class="last_active_time">{{ t.created_time | time_between_now }}</span>
+                            {% endif %}
+                        </span>
+                        <div class="topic_title_wrapper">
+                            <a class="topic_title" href="{{ url_for('topic.detail', id=t.id) }}">
+                                {{ t.title }}
+{#                                创建时间：{{ t.created_time | format_time }}#}
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {# 最近参与的话题#}
+            <div class='panel'>
+                <div class='header'>
+                    <span class='col_fade'>最近参与的话题</span>
+                </div>
+
+                <div class="cell">
+                    {# 按时间倒序排列#}
+                    {% for t in replied | sort(attribute='created_time',reverse = True) %}
+
+                        <a class="user_avatar pull-left" href="{{ url_for('profile.user_detail', id=t.user_id) }}">
+                            <img src="{{ t.user().image }}" title="{{ t.user().username }}">
+                        </a>
+                        <span class="reply_count pull-left">
+                            <span class="count_of_replies" title="回复数">
+                                {{ t.replies() | count }}
+                            </span>
+                            <span class="count_seperator">/</span>
+                            <span class="count_of_visits" title="点击数">
+                                {{ t.views }}
+                            </span>
+                        </span>
+
+                        <span class='last_time pull-right'>
+                            {% if t.last_reply() != None %}
+                                <a class="user_avatar" href="{{ url_for('profile.user_detail', id=t.last_reply().user_id) }}">
+                                    <img class="user_small_avatar" src="{{ t.last_reply().user().image }}">
+                                </a>
+                                <span class="last_active_time">{{ t.last_reply().created_time | time_between_now }}</span>
+                            {% else %}
+                                <span class="last_active_time">{{ t.created_time | time_between_now }}</span>
+                            {% endif %}
+                        </span>
+
+                        <div class="topic_title_wrapper">
+                            <a class="topic_title" href="{{ url_for('topic.detail', id=t.id) }}">
+                                {{ t.title }}
+{#                                创建时间：{{ t.created_time | format_time }}#}
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

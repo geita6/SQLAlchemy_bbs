@@ -1,0 +1,8 @@
+.idea
+*.txt
+*.log
+*.pyc
+secret.py
+config.py
+deploy.sh
+.gitattributes
