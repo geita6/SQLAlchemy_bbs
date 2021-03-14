@@ -110,9 +110,6 @@ def reset_view():
 def reset_update():
     token_id = request.args['token_id']
 
-    # 如果 token 存在通过对应 user_id 拿到 user 对象
-    # if cache.exists(token.encode()) and int(cache.get(token).decode()) == u.id:
-    # user_id = token.get(token_id, None)
     user_id = int(cache.get(token_id).decode())
     if user_id is None:
         log('token not found', token_id)

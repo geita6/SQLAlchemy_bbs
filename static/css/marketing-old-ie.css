@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-/*
- * -- BASE STYLES --
- * Most of these are inherited from Base, but I want to change a few.
- */
 
 body {
     line-height: 1.7em;
@@ -37,10 +33,6 @@ img {
     height: auto;
 }
 
-/*
- * -- LAYOUT STYLES --
- * These are some useful classes which I will need
- */
 
 .l-box {
     padding: 1em;

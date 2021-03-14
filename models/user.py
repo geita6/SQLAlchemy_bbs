@@ -26,7 +26,6 @@ class User(SQLMixin, db.Model):
     @classmethod
     def register(cls, form):
         name = form.get('username', '')
-        print('register', form)
         if len(name) > 2 and User.one(username=name) is None:
             form['password'] = User.salted_password(form['password'])
             u = User.new(form)
@@ -36,7 +35,6 @@ class User(SQLMixin, db.Model):
 
     @classmethod
     def validate_login(cls, form):
-        # print('form', form)
         query = dict(
             username=form['username'],
             password=User.salted_password(form['password']),

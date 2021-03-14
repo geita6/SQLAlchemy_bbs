@@ -30,9 +30,6 @@ class SQLMixin(object):
 
     @classmethod
     def update(cls, id, **kwargs):
-        # u.username = 'test'
-        # db.session.add(u)
-        # db.session.commit()
         m = cls.query.filter_by(id=id).first()
         for name, value in kwargs.items():
             setattr(m, name, value)

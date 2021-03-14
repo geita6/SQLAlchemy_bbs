@@ -84,8 +84,6 @@ def generate_fake_date():
     )
 
 
-    # for i in range(3):
-    # print('begin topic <{}>'.format(i))
     t1 = Topic.new(topic_form1, u1.id)
     t2 = Topic.new(topic_form2, u2.id)
     t3 = Topic.new(topic_form3, u3.id)

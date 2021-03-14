@@ -27,7 +27,6 @@ def current_user():
         if user_id is None:
             return User.guest()
         else:
-            # print('in has session')
             uid = int(user_id.decode())
             u = User.one(id=uid)
             if u is None:
@@ -53,9 +52,6 @@ def login_required(route_function):
     return f
 
 
-# csrf_tokens = dict()
-
-
 def csrf_required(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
@@ -73,7 +69,6 @@ def csrf_required(f):
 
 def new_csrf_token():
     u = current_user()
-    # print('new_csrf_token, user', u)
     token = str(uuid.uuid4())
     cache.set(token, u.id)
     return token

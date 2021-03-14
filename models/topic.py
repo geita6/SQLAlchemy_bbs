@@ -38,8 +38,6 @@ class Topic(SQLMixin, db.Model):
 
     def replies(self):
         ms = Reply.all(topic_id=self.id)
-        # print('self id  ', self.id)
-        # print('all replies', ms)
         return ms
 
     def last_reply(self):
